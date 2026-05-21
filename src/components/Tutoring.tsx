@@ -1,5 +1,12 @@
 "use client";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+declare global {
+  interface Window {
+    Cal?: any;
+  }
+}
+
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -20,13 +27,42 @@ const features = [
 
 export default function Tutoring() {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.cal.com/embed/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
+    (function (C: Window & { Cal?: unknown }, A: string, L: string) {
+      const p = function (a: unknown, ar: unknown) {
+        a = a || {};
+        // eslint-disable-next-line prefer-rest-params
+        (C.Cal as { q?: unknown[] }).q = (C.Cal as { q?: unknown[] }).q || [];
+        const cal = C.Cal as { q: unknown[] };
+        cal.q.push(arguments);
+      };
+      if (!C.Cal) {
+        const cal = p as unknown as { ns?: Record<string, unknown>; q: unknown[]; loaded?: boolean };
+        cal.ns = {};
+        cal.q = [];
+        cal.loaded = false;
+        C.Cal = cal;
+        const d = C.document;
+        const s = d.createElement("script");
+        s.src = A;
+        s.async = true;
+        d.head.appendChild(s);
+      }
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    const waitForCal = setInterval(() => {
+      if (window.Cal && typeof (window.Cal as CallableFunction) === "function") {
+        clearInterval(waitForCal);
+        (window.Cal as CallableFunction)("init", { origin: "https://cal.com" });
+        (window.Cal as CallableFunction)("ui", {
+          theme: "dark",
+          cssVarsPerTheme: {
+            dark: { "cal-bg": "#0a0a0f", "cal-text": "#e8e8e8" },
+          },
+        });
+      }
+    }, 100);
+
+    return () => clearInterval(waitForCal);
   }, []);
 
   return (
@@ -120,13 +156,9 @@ export default function Tutoring() {
               <button
                 data-cal-link="mann-sharma-xfxaht/15min"
                 data-cal-config='{"theme":"dark"}'
-                className="w-full px-8 py-5 text-base font-medium bg-[#4ecdc4] text-[#0a0a0f] rounded-xl hover:scale-[1.02] transition-transform flex items-center justify-center gap-3"
+                className="group w-full py-4 text-sm tracking-wide uppercase text-[#4ecdc4] border border-[#4ecdc4]/30 hover:border-[#4ecdc4] hover:bg-[#4ecdc4]/5 transition-all duration-300"
               >
-                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="4" width="14" height="14" rx="2" />
-                  <path d="M3 8h14M7 2v4M13 2v4" />
-                </svg>
-                Schedule a Free 15-Min Consultation
+                Pick a time &rarr;
               </button>
             </div>
 
