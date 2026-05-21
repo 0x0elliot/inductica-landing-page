@@ -106,25 +106,14 @@ export default function Tutoring() {
                 15-minute consultation.
               </p>
 
-              {/* Calendly/Cal.com embed placeholder */}
-              <div className="aspect-[4/3] rounded-xl bg-[#0a0a0f] border border-white/5 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-12 h-12 rounded-full border border-[#4ecdc4]/30 flex items-center justify-center mx-auto mb-4">
-                    <svg width="24" height="24" fill="none" stroke="#4ecdc4" strokeWidth="1.5">
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <path d="M3 10h18M8 2v4M16 2v4" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-[#9a9a9a] mb-4">
-                    Calendar embed goes here
-                  </p>
-                  <a
-                    href="mailto:contact@inductica.org"
-                    className="inline-block px-6 py-3 text-sm font-medium bg-[#4ecdc4] text-[#0a0a0f] rounded-full hover:scale-105 transition-transform"
-                  >
-                    Contact to Book
-                  </a>
-                </div>
+              <div className="rounded-xl overflow-hidden border border-white/5">
+                <iframe
+                  src="https://cal.com/mann-sharma-xfxaht/15min?embed=true&theme=dark"
+                  width="100%"
+                  height="450"
+                  style={{ border: "none" }}
+                  className="bg-[#0a0a0f]"
+                />
               </div>
             </div>
 
