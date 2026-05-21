@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const features = [
@@ -18,6 +19,16 @@ const features = [
 ];
 
 export default function Tutoring() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://app.cal.com/embed/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section id="tutoring" className="relative py-32 md:py-40">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4ecdc4]/[0.03] to-transparent" />
@@ -106,15 +117,17 @@ export default function Tutoring() {
                 15-minute consultation.
               </p>
 
-              <div className="rounded-xl overflow-hidden border border-white/5">
-                <iframe
-                  src="https://cal.com/mann-sharma-xfxaht/15min?embed=true&theme=dark"
-                  width="100%"
-                  height="450"
-                  style={{ border: "none" }}
-                  className="bg-[#0a0a0f]"
-                />
-              </div>
+              <button
+                data-cal-link="mann-sharma-xfxaht/15min"
+                data-cal-config='{"theme":"dark"}'
+                className="w-full px-8 py-5 text-base font-medium bg-[#4ecdc4] text-[#0a0a0f] rounded-xl hover:scale-[1.02] transition-transform flex items-center justify-center gap-3"
+              >
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="3" y="4" width="14" height="14" rx="2" />
+                  <path d="M3 8h14M7 2v4M13 2v4" />
+                </svg>
+                Schedule a Free 15-Min Consultation
+              </button>
             </div>
 
             <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-[#4ecdc4]/10 to-transparent -z-10 blur-xl" />
