@@ -7,9 +7,11 @@ import JoinMission from "@/components/JoinMission";
 import People from "@/components/People";
 import Footer from "@/components/Footer";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
-    <div className="bg-[#0a0a0f]">
+    <>
       <Navbar />
       <Hero />
       <About />
@@ -18,6 +20,6 @@ export default function Home() {
       <JoinMission />
       <People />
       <Footer />
-    </div>
+    </>
   );
 }

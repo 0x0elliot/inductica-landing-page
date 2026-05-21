@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Space_Grotesk } from "next/font/google";
+import { Inter, Lora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,19 +8,21 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space",
-  subsets: ["latin"],
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
-  title: "Inductica — Design Lookbook",
-  description: "Hero design exploration",
+  title: "Inductica | Physics Tutoring & Research",
+  description:
+    "Physics and math tutoring grounded in real understanding. $100/hr. 4,000+ verified reviews.",
 };
 
 export default function RootLayout({
@@ -30,9 +33,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${inter.variable} ${lora.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#0a0a0f] text-white font-sans">
+      <body className="min-h-full font-sans">
+        <div className="noise-overlay" />
         {children}
       </body>
     </html>

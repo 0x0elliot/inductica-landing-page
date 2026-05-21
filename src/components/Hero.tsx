@@ -1,66 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
-import WaveBackground from "./WaveBackground";
+import FadeIn from "./FadeIn";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <WaveBackground accent="#4ecdc4" variant="interference" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/40 via-transparent to-[#0a0a0f]" />
+    <section className="relative z-10 mx-auto max-w-5xl px-6 pt-28 pb-20 sm:pt-36 sm:pb-28">
+      <FadeIn>
+        <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--color-muted)] mb-6">
+          Physics tutoring & research
+        </p>
+      </FadeIn>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="uppercase tracking-[0.3em] text-sm mb-8 text-[#4ecdc4]"
-        >
-          Inductica
-        </motion.p>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 text-[#e8e8e8]"
-        >
-          The Inductive
+      <FadeIn delay={100}>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-[var(--color-fg)] mb-6">
+          Physics tutoring grounded
           <br />
-          Revolution
-          <br />
-          <span className="text-[#4ecdc4]">Has Begun</span>
-        </motion.h1>
+          in real{" "}
+          <span className="font-serif italic text-[var(--color-accent)]">
+            understanding.
+          </span>
+        </h1>
+      </FadeIn>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed text-[#9a9a9a]"
-        >
-          Rebuilding physics from the ground up. One proof at a time.
-        </motion.p>
+      <FadeIn delay={200}>
+        <p className="text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-xl mb-10">
+          James Ellias has spent 20 years teaching physics. Not as memorization,
+          but as principled reasoning from observation. He can help you too.
+        </p>
+      </FadeIn>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex gap-4 justify-center flex-wrap"
-        >
+      <FadeIn delay={300}>
+        <div className="flex items-center gap-4 flex-wrap">
           <a
             href="#tutoring"
-            className="px-8 py-4 rounded-full text-sm font-medium tracking-wide uppercase bg-[#4ecdc4] text-[#0a0a0f] transition-all hover:scale-105"
+            className="px-6 py-3 text-[13px] font-medium border border-[var(--color-accent)]/40 text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white hover:border-[var(--color-accent)] rounded-lg transition-all duration-200 active:scale-[0.98]"
           >
-            Book Tutoring
+            Book a session &rarr;
           </a>
           <a
-            href="#mission"
-            className="px-8 py-4 rounded-full text-sm font-medium tracking-wide uppercase border border-[#4ecdc444] text-[#e8e8e8] transition-all hover:scale-105 hover:border-[#4ecdc488]"
+            href="#about"
+            className="px-6 py-3 text-[13px] font-medium text-[var(--color-muted)] hover:text-[var(--color-fg)] transition-colors duration-200"
           >
-            Join the Mission
+            Learn about the project
           </a>
-        </motion.div>
-      </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={400}>
+        <div className="mt-14 grid grid-cols-3 gap-px bg-[var(--color-border)] rounded-lg overflow-hidden border border-[var(--color-border)] max-w-md">
+          {[
+            { value: "$100", label: "per hour" },
+            { value: "4,000+", label: "reviews" },
+            { value: "20+", label: "years" },
+          ].map((stat) => (
+            <div key={stat.label} className="bg-[#0D0D0D] p-4 text-center">
+              <p className="font-serif italic text-xl text-[var(--color-fg)]">
+                {stat.value}
+              </p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)] mt-1">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
     </section>
   );
 }

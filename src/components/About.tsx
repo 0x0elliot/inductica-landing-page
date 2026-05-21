@@ -1,91 +1,85 @@
 "use client";
 
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 
 const pillars = [
   {
+    index: "01",
     title: "Theory of Induction",
     description:
-      "A systematic method for proving scientific conclusions from observation with certainty.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M16 4v24M8 12l8-8 8 8M6 28h20" />
-      </svg>
-    ),
+      "A systematic method for proving scientific conclusions from observation. With certainty, not probability.",
   },
   {
-    title: "Overhauling Physics",
+    index: "02",
+    title: "Reproof of Physics",
     description:
-      "Reproving the essentials of known physics from observation, free of faulty assumptions.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="16" cy="16" r="10" />
-        <ellipse cx="16" cy="16" rx="10" ry="4" transform="rotate(60 16 16)" />
-        <ellipse cx="16" cy="16" rx="10" ry="4" transform="rotate(-60 16 16)" />
-      </svg>
-    ),
+      "Using induction to reprove every essential principle of physics from observation, eliminating faulty assumptions.",
   },
   {
-    title: "Conquering the Aether",
+    index: "03",
+    title: "New Discoveries",
     description:
-      "Making provable new discoveries about the underlying nature of electromagnetism and gravity.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M4 16c4-8 8-12 12-12s8 4 12 12c-4 8-8 12-12 12s-8-4-12-12z" />
-        <circle cx="16" cy="16" r="4" />
-      </svg>
-    ),
+      "A proof of the aether's existence, a refutation of special relativity, and a fluid hypothesis of electromagnetism.",
+  },
+  {
+    index: "04",
+    title: "The Mechanical Universe",
+    description:
+      "Chantal Roth's hypothesis integrating all known physical phenomena under one elastic aether theory, brought to life with simulations.",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-32 md:py-40">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl mb-20"
-        >
-          <p className="uppercase tracking-[0.25em] text-xs text-[#4ecdc4] mb-4">
-            What is Inductica
+    <section id="about" className="relative z-10 mx-auto max-w-5xl px-6 pb-24">
+      <FadeIn>
+        <div className="border-b border-[var(--color-border)] pb-6 mb-10">
+          <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--color-muted)]">
+            The project
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-[#e8e8e8] leading-tight mb-6">
-            Modern physics is built on
-            <br />
-            <span className="text-[#4ecdc4]">flawed foundations.</span>
-          </h2>
-          <p className="text-lg text-[#9a9a9a] leading-relaxed">
-            Quantum Mechanics and General Relativity make many correct
-            predictions, but they make false claims about the underlying nature
-            of the phenomena. Inductica is going back to the observations to
-            build physics on solid, provable ground.
-          </p>
-        </motion.div>
+        </div>
+      </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pillars.map((pillar, i) => (
-            <motion.div
-              key={pillar.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#4ecdc4]/20 transition-all duration-500"
-            >
-              <div className="text-[#4ecdc4] mb-6">{pillar.icon}</div>
-              <h3 className="font-serif text-xl font-bold text-[#e8e8e8] mb-3">
+      <FadeIn delay={100}>
+        <div className="grid gap-0 md:grid-cols-[1.4fr_auto_1fr] mb-16">
+          <div className="pr-0 md:pr-10">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-fg)] leading-tight mb-4">
+              Modern physics is built on
+              <br />
+              flawed{" "}
+              <span className="font-serif italic text-[var(--color-accent)]">
+                foundations.
+              </span>
+            </h2>
+          </div>
+          <div className="hidden md:block border-l border-[var(--color-border)]" />
+          <div className="pt-6 md:pt-0 md:pl-10">
+            <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+              Quantum Mechanics and General Relativity make correct predictions
+              but false claims about the underlying phenomena. Inductica is going
+              back to observation to rebuild physics on provable ground.
+            </p>
+          </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={200}>
+        <div className="grid gap-px bg-[var(--color-border)] rounded-lg overflow-hidden border border-[var(--color-border)] md:grid-cols-2">
+          {pillars.map((pillar) => (
+            <div key={pillar.index} className="bg-[#0D0D0D] p-6">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)]/50 mb-3">
+                {pillar.index}
+              </p>
+              <h3 className="text-[14px] font-semibold text-[var(--color-fg)] mb-1.5">
                 {pillar.title}
               </h3>
-              <p className="text-sm text-[#9a9a9a] leading-relaxed">
+              <p className="text-[12px] leading-relaxed text-[var(--color-muted)]">
                 {pillar.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }
