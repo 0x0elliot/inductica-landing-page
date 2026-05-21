@@ -49,7 +49,7 @@ export default function Hero() {
       <FadeIn delay={400}>
         <div className="mt-14 grid grid-cols-3 gap-px bg-[var(--color-border)] rounded-lg overflow-hidden border border-[var(--color-border)] max-w-md">
           {[
-            { value: "$100", label: "per hour" },
+            { value: "507,544", label: "views" },
             { value: "4,000+", label: "reviews" },
             { value: "20+", label: "years" },
           ].map((stat) => (
