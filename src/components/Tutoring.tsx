@@ -81,11 +81,11 @@ export default function Tutoring() {
 
             <div className="grid grid-cols-2 gap-px bg-[var(--color-border)] rounded-lg overflow-hidden border border-[var(--color-border)] mb-8">
               {[
-                { value: "$100", label: "per hour" },
+                { value: "$120", label: "per hour" },
                 {
-                  value: "4,000+",
+                  value: "700+",
                   label: "verified reviews",
-                  link: "https://www.wyzant.com/Tutors/radmath",
+                  link: "https://www.wyzant.com/Tutors/UT/Provo/8261777",
                 },
               ].map((stat) => (
                 <div key={stat.label} className="bg-[#0D0D0D] p-4">
